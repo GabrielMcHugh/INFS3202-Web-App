@@ -1,15 +1,24 @@
 To Do:
 	Major
-	- Create the two different pages of the website
-	- Div the pages up into their parts
+	- Implement multiples web pages
 	- Implement the functionalities in each of those divs
+
 	Minor
 	- Center searchbox but push Shutterspace Logo to the right
 
+	Fix
+
+
 Doing:
 	- Expand the content to take up the whole page
-	- Add a footer	
+
+
 
 
 Done:
 	- Added a Sidebar and Content div
+	- Add a footer
+	- The positioning of the sidebar is fixed. It moves along with you as you scroll.
+	How to keep it stuck without losing the layout
+	- Added images to the slides
+	- Div the pages up into their parts

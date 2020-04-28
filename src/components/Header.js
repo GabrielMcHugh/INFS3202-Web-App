@@ -1,5 +1,6 @@
 import React from 'react';
 import Searchbox from './Searchbox';
+import './Header.css'
 
 function Header() {
 	//const link = 'https://tachyons.io/components/nav/large-title-link-list/index.html#'
