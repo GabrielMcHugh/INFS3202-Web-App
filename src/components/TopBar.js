@@ -2,7 +2,7 @@ import React from 'react';
 
 function TopBar() {
 	return (
-		<div className="pb3 bg-lightest-blue">
+		<div className="pa3" style={{backgroundColor : '#A5DA91'}}>
 			    <a className="link dim gray f6 f5-ns dib mr3" href='https://tachyons.io/components/nav/large-title-link-list/index.html#' title="Home">Home</a>
 			    <a className="link dim gray f6 f5-ns dib mr3" href='https://tachyons.io/components/nav/large-title-link-list/index.html#' title="About">About</a>
 			    <a className="link dim gray f6 f5-ns dib mr3" href='https://tachyons.io/components/nav/large-title-link-list/index.html#' title="Store">Store</a>
