@@ -9,8 +9,8 @@ import 'tachyons';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App key="1" /> 
-		<Footer key="2" />
+		<App /> 
+		<Footer />
 	</React.StrictMode>, 
 	document.getElementById("root")
 );
