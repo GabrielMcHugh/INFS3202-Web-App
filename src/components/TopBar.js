@@ -1,6 +1,5 @@
 import React from 'react';
 
-const link = 'https://tachyons.io/components/nav/large-title-link-list/index.html#'
 const linkStyle = "link dim gray f6 f5-ns dib mr3 pointer";
 
 const TopBar = ({onRouteChange}) => {
