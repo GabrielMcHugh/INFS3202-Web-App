@@ -1,6 +1,7 @@
 footer {
   flex-shrink: 0;
   text-align: center;
-  background-color: tomato;
+  background-color: #96CCFF;
+  opacity: .4;
   color: white;
 }

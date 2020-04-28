@@ -1,13 +1,13 @@
 import React from 'react';
 
 const link = 'https://tachyons.io/components/nav/large-title-link-list/index.html#'
-const linkStyle = "link dim gray f6 f5-ns dib mr3";
+const linkStyle = "link dim gray f6 f5-ns dib mr3 pointer";
 
-function TopBar() {
+const TopBar = ({onRouteChange}) => {
 	return (
-		<div className="pa3" style={{backgroundColor : '#A5DA91'}}>
-			    <a className={linkStyle} href={link} title="About">Sign in</a>
-			    <a className={linkStyle} href={link} title="Store">Register</a>
+		<div className="pa3 o-40 bg-light-blue">
+			    <p onClick={() => onRouteChange('signin')} className={linkStyle} title="About">Sign in</p>
+			    <p onClick={() => onRouteChange('register')} className={linkStyle} title="About">Register</p>
 		</div>
 	)
 }
