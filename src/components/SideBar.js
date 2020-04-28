@@ -1,14 +1,17 @@
 import React from 'react';
 
+const link = 'https://tachyons.io/components/nav/large-title-link-list/index.html#'
+const linkStyle = 'link dim gray f6 f5-ns db mr3'
+
 function Sidebar() {
 	return (
 		<div>
-			<div style ={{ position : 'fixed', background : '#d0e3fa', width : '25%' }}>
+			<div className="pl3" style ={{ position : 'fixed', background : '#d0e3fa', width : '25%'}}>
 			  <h3 className="f6 f5-ns mr3">Menu</h3>
-			  <a className="link dim gray f6 f5-ns db mr3" href='https://tachyons.io/components/nav/large-title-link-list/index.html#' title="Home">Link</a>
-			    <a className="link dim gray f6 f5-ns db mr3" href='https://tachyons.io/components/nav/large-title-link-list/index.html#' title="About">Link</a>
-			    <a className="link dim gray f6 f5-ns db mr3" href='https://tachyons.io/components/nav/large-title-link-list/index.html#' title="Store">Link</a>
-			    <a className="link dim gray f6 f5-ns db" href='https://tachyons.io/components/nav/large-title-link-list/index.html#' title="Contact">Link</a>
+			  <a className={linkStyle} href={link} title="Home">Link</a>
+			    <a className={linkStyle} href={link} title="About">Link</a>
+			    <a className={linkStyle} href={link} title="Store">Link</a>
+			    <a className={linkStyle} href={link} title="Contact">Link</a>
 			</div>
 
 			<div style = {{ background : '#faeeb6', marginLeft : '25%' }}>
