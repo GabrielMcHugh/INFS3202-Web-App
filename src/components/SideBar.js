@@ -7,7 +7,7 @@ const linkStyle = 'link dim gray ma2 f6 f5-ns db mr3'
 function Sidebar() {
 	return (
 		<div>
-			<div className="pl3" style ={{ position : 'absolute', background : '#d0e3fa', width : '25%'}}>
+			<div className="pl3" style ={{ backgroundColor: 'rgb(255,255,255,0.5)', position : 'absolute', width : '25%'}}>
 			  <h3 className="f6 f5-ns mr3">Menu</h3>
 			  <a className={linkStyle} href={link} title="Home">Link</a>
 			    <a className={linkStyle} href={link} title="About">Link</a>
@@ -15,7 +15,7 @@ function Sidebar() {
 			    <a className={linkStyle} href={link} title="Contact">Link</a>
 			</div>
 
-			<div style = {{ background : '#faeeb6', marginLeft : '25%' }}>
+			<div style = {{ backgroundColor: 'rgb(255,255,255,0.5)', marginLeft : '25%' }}>
 
 				<div>
 				  <h1 style = {{margin : 0}}>Digital Cameras</h1>
