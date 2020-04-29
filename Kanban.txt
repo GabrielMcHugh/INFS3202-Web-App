@@ -2,15 +2,25 @@ To Do:
 	Major
 	- Implement multiples web pages
 	- Implement the functionalities in each of those divs
+	- Create web pages
+		1. Web page for categories
+		2. Web page when you click on an item card
+		3. Login page
+	- Give nav bar different buttons and checkboxes that effect search
+	- Setup database
+
 
 	Minor
 	- Center searchbox but push Shutterspace Logo to the right
+	- Clean up the Carousel file. Refactor code so less repeatable.
 
 	Fix
 
 
 Doing:
-	- Expand the content to take up the whole page
+	- Setup node js and react server on your laptop
+	- test your server
+	- implement cors and connect your server to your front end
 
 
 

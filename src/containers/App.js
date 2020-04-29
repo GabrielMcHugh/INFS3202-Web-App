@@ -12,8 +12,25 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			route: 'home'
+			route: 'home',
+			user: {
+				email: '',
+				id: '',
+				name: '',
+				entries: 0,
+				joined: '',
+			}
 		}
+	}
+
+	loadUser = (data) => {
+		this.setState({user: {
+			email: data.email,
+			id: data.id,
+			name: data.name,
+			entries: data.entries,
+			joined: data.joined,
+		}})
 	}
 
 	onRouteChange = (route) => {
@@ -33,7 +50,7 @@ class App extends Component {
 	  		: (
 	  			this.state.route === 'signin'
 	  		    ? <Signin onRouteChange={this.onRouteChange}/>
-	  		    : <Register onRouteChange={this.onRouteChange}/>
+	  		    : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 	  		  )
 	  		}
 	  	</div>
