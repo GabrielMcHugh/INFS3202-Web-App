@@ -10,7 +10,7 @@
     "pure-react-carousel": "^1.27.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.1.2",
     "tachyons": "^4.11.1"
   },
   "scripts": {
