@@ -6,13 +6,16 @@ import TopBar from '../components/TopBar';
 import SideBar from '../components/SideBar';
 import Signin from '../components/Signin';
 import Register from '../components/Register';
+import Settings from '../components/Settings/Settings';
+//import camera2 from '../images/camera2.jpeg';
 
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			route: 'home',
+			route: 'profile',
+			isSignedIn: false,
 			user: {
 				email: '',
 				id: '',
@@ -36,26 +39,34 @@ class App extends Component {
 	onRouteChange = (route) => {
 		this.setState({route : route });
 	}
+
+	onSignIn = (bool) => {
+		this.setState({isSignedIn : true});
+	}
   
 	render() {
+	  const state = this.state.route;
 	  return (
 	  	<div className='App'>
-	  		<TopBar onRouteChange={this.onRouteChange}/>
-	  		{ this.state.route === 'home' 
+	  		<TopBar onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn} userID ={this.state.user.id}/>
+	  		{ state === 'home' 
 	  		? <div>
 		  		<Header/>
 		  		<Nav/>
 		  		<SideBar/>
 		  	  </div> 
-	  		: (
-	  			this.state.route === 'signin'
-	  		    ? <Signin onRouteChange={this.onRouteChange}/>
-	  		    : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-	  		  )
+	  		: ( state === 'signin'
+	  		    ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
+	  		    : ( state === 'register'
+	  		    	? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+	  		    	: <Settings/>
+	  		  	)
+	  		  )	  		    
 	  		}
 	  	</div>
 	  );
 	}
 }
+
 
 export default App;
