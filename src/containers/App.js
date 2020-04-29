@@ -27,6 +27,7 @@ class App extends Component {
 	}
 
 	loadUser = (data) => {
+		console.log('load user ran')
 		this.setState({user: {
 			email: data.email,
 			id: data.id,
@@ -34,6 +35,7 @@ class App extends Component {
 			entries: data.entries,
 			joined: data.joined,
 		}})
+		console.log(`user id is now ${this.state.user.id}`)
 	}
 
 	onRouteChange = (route) => {
@@ -48,7 +50,7 @@ class App extends Component {
 	  const state = this.state.route;
 	  return (
 	  	<div className='App'>
-	  		<TopBar onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn} userID ={this.state.user.id}/>
+	  		<TopBar onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/>
 	  		{ state === 'home' 
 	  		? <div>
 		  		<Header/>
@@ -59,7 +61,7 @@ class App extends Component {
 	  		    ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
 	  		    : ( state === 'register'
 	  		    	? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-	  		    	: <Settings/>
+	  		    	: <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
 	  		  	)
 	  		  )	  		    
 	  		}

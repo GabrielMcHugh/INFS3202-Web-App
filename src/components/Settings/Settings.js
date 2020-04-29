@@ -20,6 +20,7 @@ class Settings extends React.Component {
 	//4. Take the response and load it to the App state
 
 	onSubmitUpdate = () => {
+		console.log(this.state.id)
 		fetch('https://salty-mountain-94369.herokuapp.com/update', {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
