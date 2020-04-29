@@ -24,6 +24,7 @@ class Settings extends React.Component {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
+				id: this.props.userID,
 				email: this.state.email,
 			})
 		})
