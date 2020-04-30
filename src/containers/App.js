@@ -7,6 +7,7 @@ import SideBar from '../components/SideBar';
 import Signin from '../components/Signin';
 import Register from '../components/Register';
 import Settings from '../components/Settings/Settings';
+import FileUpload from '../components/FileUpload/FileUpload';
 //import camera2 from '../images/camera2.jpeg';
 
 
@@ -14,7 +15,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			route: 'profile',
+			route: 'upload',
 			isSignedIn: false,
 			user: {
 				email: '',
@@ -59,7 +60,10 @@ class App extends Component {
 	  		    ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
 	  		    : ( state === 'register'
 	  		    	? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-	  		    	: <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
+	  		    	:   ( state === 'profilesettings'
+	  		    		? <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
+	  		    		: <FileUpload/>
+	  		    	)
 	  		  	)
 	  		  )	  		    
 	  		}
