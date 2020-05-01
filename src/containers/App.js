@@ -3,7 +3,7 @@ import './App.css';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
 import TopBar from '../components/TopBar';
-import SideBar from '../components/SideBar';
+import Content from '../components/Content';
 import Signin from '../components/Signin';
 import Register from '../components/Register';
 import Settings from '../components/Settings/Settings';
@@ -11,12 +11,26 @@ import FileUpload from '../components/FileUpload/FileUpload';
 //import camera2 from '../images/camera2.jpeg';
 
 
+/*
+What I want to do: Have the web app return cards displaying the items stored in the database
+
+How Im planning on doing that:
+- Implement the Front end loading a list of Cards
+	+ Copy robofriends implementation
+- Have the main page request data from the back end, show loading while we wait, then displaying the cards after rtn
+- Implement the back end returning the data
+
+
+*/
+
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			route: 'upload',
+			route: 'home',
 			isSignedIn: false,
+			items: [],
+			searchfield: '',
 			user: {
 				email: '',
 				id: '',
@@ -25,6 +39,17 @@ class App extends Component {
 				joined: '',
 			}
 		}
+	}
+
+	componentDidMount(){
+		fetch('https://jsonplaceholder.typicode.com/users')
+		.then(response=> response.json())
+		.then(users => this.setState({ items: users}))
+	}
+
+
+	onSearchChange = (event) => {
+		this.setState({ searchfield: event.target.value })
 	}
 
 	loadUser = (data) => {
@@ -46,23 +71,32 @@ class App extends Component {
 	}
   
 	render() {
-	  const state = this.state.route;
-	  return (
+	  	const { route, items, searchfield } = this.state;
+
+		const filteredItems = items.filter(items =>{
+			return items.name.toLowerCase().includes(searchfield.toLowerCase());
+		})
+
+		console.log('frirst', filteredItems)
+
+	  return !items.length ?
+			<h1>Loading</h1> :
+		(
 	  	<div className='App'>
 	  		<TopBar onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/>
-	  		{ state === 'home' 
+	  		{ route === 'home' 
 	  		? <div>
-		  		<Header/>
+		  		<Header onSearchChange={this.onSearchChange}/>
 		  		<Nav/>
-		  		<SideBar/>
+		  		<Content filteredItems={filteredItems}/>
 		  	  </div> 
-	  		: ( state === 'signin'
+	  		: ( route === 'signin'
 	  		    ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
-	  		    : ( state === 'register'
+	  		    : ( route === 'register'
 	  		    	? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-	  		    	:   ( state === 'profilesettings'
+	  		    	:   ( route === 'profilesettings'
 	  		    		? <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
-	  		    		: <FileUpload/>
+	  		    		: <FileUpload userID={this.state.user.id}/>
 	  		    	)
 	  		  	)
 	  		  )	  		    

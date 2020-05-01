@@ -42,24 +42,57 @@ class FileUpload extends React.Component {
 	   	return true;
 	}
 
-	onClickHandler = () => {
-	   	const data = new FormData()
+	submitFileData = () => {
+	   	const fileData = new FormData()
 	    for(var x = 0; x<this.state.selectedFile.length; x++) {
-       		data.append('file', this.state.selectedFile[x])
-   		}	
-
-	   axios.post('http://localhost:3000/upload', data, { 
+       		fileData.append('file', this.state.selectedFile[x])
+   		}
+	   	axios.post('https://salty-mountain-94369.herokuapp.com/upload', fileData, { 
 	      // receive two    parameter endpoint url ,form data
-	  })
-	  .then(res => { // then print response status
-	    console.log(res.statusText)
-	  })
+	  	})
+	  	.then(res => { // then print response status
+	    	console.log(res.statusText)
+	  	})
+	}
+
+	submitFormData = () => {
+		fetch('https://salty-mountain-94369.herokuapp.com/uploaditem', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				name: this.state.name,
+				price: this.state.price,
+				ownerid: this.props.userID
+			})
+		})
+			.then(response => response.json())
+			.then(user => {
+				if (user.id) {
+					this.props.onRouteChange('home');
+				}
+			})
+			.catch(err => console.log(err));
+	}
+
+	onClickHandler = () => {
+		// if (this.state.selectedFile === null) {
+		// 	return (
+		// 		alert('you must upload a file first')
+		// 	)
+		// }
+		if (!this.state.name || !this.state.price) {
+			return (
+				alert('item must have a name and a price')
+			)
+		}
+		//this.submitFileData();
+		this.submitFormData();
 	}
 
 	render () {
 		return (
 			<div className="ma2 bg-white">
-				<div class="black b tc db pa3 bg-gray">
+				<div className="black b tc db pa3 bg-gray">
 					Provide Details About The Product You Want To Sell
 				</div>
 
@@ -99,7 +132,8 @@ class FileUpload extends React.Component {
 			                	type="file" 
 			                	name="file"
 			                	multiple 
-			                	className="form-control" 
+			                	className="form-control"
+			                	onChange={this.onChangeHandler}
 			                	/>
 			              </div>
 			              <button 

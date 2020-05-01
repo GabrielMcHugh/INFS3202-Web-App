@@ -1,11 +1,13 @@
 Need to add 10 features
 
 Done:
-+ Connected to database on UQZone
-+ Setup Login and Registration
-	- Create login page on front end
-	- Setup node responses
-	- Setup database
++ Login and Registration
++ User profile updating
++ Security
++ Password hashing
++ Drag and drop file upload
++ Multiple file upload
++
 
 
 Step by step Plan:
@@ -14,23 +16,19 @@ Step by step Plan:
 + Writing Comments
 + Searchbar autocomplete (https://alligator.io/react/react-autocomplete/)
 + Infinite scrolling (https://www.pluralsight.com/guides/how-to-implement-infinite-scrolling-with-reactjs)
-+ 
+
 
 
 Features to attempt:
+3. Basic file uploading (https://www.geeksforgeeks.org/file-uploading-in-react-js/)
 
 
-
-
-B. Simplify Front End
-1. User profile updating
-	- 
 
 2. Third party API Integration [phone verification] (https://firebase.google.com/docs/auth/web/phone-auth)
-3. Basic file uploading (https://www.geeksforgeeks.org/file-uploading-in-react-js/)
+
 4. Online payment integration (https://blog.logrocket.com/building-payments-system-react-stripe/)
 5. Rating System (https://github.com/dreyescat/react-rating)
-6. Drag and drop file upload
+6. 
 7. Searchbar autocomplete (https://alligator.io/react/react-autocomplete/)
 8. Infinite scrolling (https://www.pluralsight.com/guides/how-to-implement-infinite-scrolling-with-reactjs)
 9. Maintain Scroll Position
