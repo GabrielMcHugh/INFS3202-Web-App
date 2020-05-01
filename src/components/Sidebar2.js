@@ -5,7 +5,7 @@ function Sidebar2() {
 		<div>
 			<div className="pa4" style ={{ backgroundColor: 'rgb(255,255,255,0.5)', position : 'absolute', width : '25%'}}>
 			  <fieldset id="favorite_movies" className="bn mv2 b">
-			    <legend className="fw7 mb2 gray">Price</legend>
+			    <legend className="fw7 mb2 gray">[Implementing] Price</legend>
 			    <div className="flex items-center mb2">
 			      <input className="mr2" type="checkbox" id="spacejam" value="spacejam"/>
 			      <label htmlFor="spacejam" className="lh-copy">&lt;$5</label>

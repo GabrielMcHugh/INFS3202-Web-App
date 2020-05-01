@@ -5,7 +5,7 @@ const Card = ({name, price}) => {
 		<div className='bg-white dib br3 pa3 ma2 grow bw2 shadow-5'>
 			<div>
 				<p>{name}</p>
-				<h1>{price}</h1>
+				<h1>${price}</h1>
 			</div>
 		</div>
 	);

@@ -64,28 +64,26 @@ class FileUpload extends React.Component {
 				price: this.state.price,
 				ownerid: this.props.userID
 			})
-		})
+			})
 			.then(response => response.json())
 			.then(user => {
-				if (user.id) {
-					this.props.onRouteChange('home');
-				}
+				this.props.onRouteChange('home')
 			})
 			.catch(err => console.log(err));
 	}
 
 	onClickHandler = () => {
-		// if (this.state.selectedFile === null) {
-		// 	return (
-		// 		alert('you must upload a file first')
-		// 	)
-		// }
+		if (this.state.selectedFile === null) {
+			return (
+				alert('you must upload a file first')
+			)
+		}
 		if (!this.state.name || !this.state.price) {
 			return (
 				alert('item must have a name and a price')
 			)
 		}
-		//this.submitFileData();
+		this.submitFileData();
 		this.submitFormData();
 	}
 

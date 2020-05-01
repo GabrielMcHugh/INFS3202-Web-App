@@ -42,7 +42,7 @@ class App extends Component {
 	}
 
 	componentDidMount(){
-		fetch('https://jsonplaceholder.typicode.com/users')
+		fetch('https://salty-mountain-94369.herokuapp.com/items')
 		.then(response=> response.json())
 		.then(users => this.setState({ items: users}))
 	}
@@ -77,8 +77,6 @@ class App extends Component {
 			return items.name.toLowerCase().includes(searchfield.toLowerCase());
 		})
 
-		console.log('frirst', filteredItems)
-
 	  return (
 	  	<div className='App'>
 	  		<TopBar onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/>
@@ -94,7 +92,7 @@ class App extends Component {
 	  		    	? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 	  		    	:   ( route === 'profilesettings'
 	  		    		? <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
-	  		    		: <FileUpload userID={this.state.user.id}/>
+	  		    		: <FileUpload userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
 	  		    	)
 	  		  	)
 	  		  )	  		    

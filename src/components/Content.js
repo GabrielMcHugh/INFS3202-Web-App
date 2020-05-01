@@ -2,13 +2,11 @@ import React from 'react';
 import Body from './Body';
 import Sidebar2 from './Sidebar2';
 
-			//
-
 const Content = ({filteredItems}) => {
 	return (
-		<div>
-			<Body filteredItems={filteredItems}/>
+		<div className="pb7">
 			<Sidebar2/>
+			<Body filteredItems={filteredItems}/>
 		</div>
 	)
 }
