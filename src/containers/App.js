@@ -41,11 +41,11 @@ class App extends Component {
 		}
 	}
 
-	componentDidMount(){
-		fetch('https://jsonplaceholder.typicode.com/users')
-		.then(response=> response.json())
-		.then(users => this.setState({ items: users}))
-	}
+	// componentDidMount(){
+	// 	fetch('https://jsonplaceholder.typicode.com/users')
+	// 	.then(response=> response.json())
+	// 	.then(users => this.setState({ items: users}))
+	// }
 
 
 	onSearchChange = (event) => {
@@ -76,8 +76,6 @@ class App extends Component {
 		const filteredItems = items.filter(items =>{
 			return items.name.toLowerCase().includes(searchfield.toLowerCase());
 		})
-
-		console.log('frirst', filteredItems)
 
 	  return !items.length ?
 			<h1>Loading</h1> :
