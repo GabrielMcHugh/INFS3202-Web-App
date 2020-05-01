@@ -9,6 +9,7 @@ const CardList = ({filteredItems}) => {
 				filteredItems.map((user, i) => {
 					return ( 
 						<Card 
+							key={i} 
 							name={filteredItems[i].name} 
 							price={filteredItems[i].price}/>
 					);
