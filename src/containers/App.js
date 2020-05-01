@@ -77,7 +77,7 @@ class App extends Component {
 			return items.name.toLowerCase().includes(searchfield.toLowerCase());
 		})
 
-	  return !items.length ?
+	  return items.length ?
 			<h1>Loading</h1> :
 		(
 	  	<div className='App'>

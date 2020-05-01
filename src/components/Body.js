@@ -1,13 +1,12 @@
 import React from 'react';
-import CardList from './CardList';
-
+//<CardList filteredItems={filteredItems}/>
 const Body = ({ filteredItems }) => {
 
 	console.log('filerted items',filteredItems);
 
 	return (
 		<div className="pb7 ba bw1 b--near-white br4" style={{ marginLeft: '25%'}}>
-			<CardList filteredItems={filteredItems}/>
+			
 		</div>
 	)
 }
