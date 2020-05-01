@@ -79,9 +79,7 @@ class App extends Component {
 
 		console.log('frirst', filteredItems)
 
-	  return !items.length ?
-			<h1>Loading</h1> :
-		(
+	  return (
 	  	<div className='App'>
 	  		<TopBar onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/>
 	  		{ route === 'home' 
