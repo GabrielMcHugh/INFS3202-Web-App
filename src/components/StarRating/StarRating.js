@@ -7,15 +7,14 @@ class StarRating extends React.Component {
 		this.state = {
 			rating: parseFloat(this.props.initialvalue),
 			numratings: this.props.numratings,
-			updatedratings: '',
 			editable: true,
 		}
 	}
 
 	onRatingChange = (newRating) => {
-		const { rating, numratings, updatedratings} = this.state;
-		const update = (rating+newRating)/(numratings+1);
-		this.setState({rating: newRating, updatedratings: update, editable: false});
+		const { rating, numratings} = this.state;
+		const update = ((rating+newRating))/(numratings+1);
+		this.setState({rating: newRating, editable: false});
 		this.onSubmitUpdate(update);
 	}
 
@@ -27,10 +26,10 @@ class StarRating extends React.Component {
 			body: JSON.stringify({
 				id: this.props.id,
 				rating: update,
+				numratings: this.props.numratings,
 			})
 		})
 			.then(response => response.text())
-			.then(text => console.log(text))
 			.catch(err => console.log(err));
 	}
 
