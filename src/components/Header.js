@@ -2,11 +2,11 @@ import React from 'react';
 import Searchbox from './Searchbox';
 import './Header.css'
 
-function Header({onSearchChange}) {
+function Header({onSearchChange, onRouteChange}) {
 	//const link = 'https://tachyons.io/components/nav/large-title-link-list/index.html#'
 	return (
-			<nav className="flex justify-around pa3 pa4-ns" style={{backgroundColor: 'rgb(255,255,255,0.5)'}}>
-			  <a className="link dim black b f1 mr3 mb3 mb4-ns" href='https://tachyons.io/components/nav/large-title-link-list/index.html#' title="Home">Shutterspace</a>
+			<nav className="flex justify-around pa3 pa4-ns"  style={{backgroundColor: 'rgb(255,255,255,0.5)'}}>
+			  <p className="link dim black b f1 mr3 mb3 mb4-ns pointer" onClick={() => onRouteChange('home')}  title="Home">Shutterspace</p>
 			  <Searchbox onSearchChange={onSearchChange}/>
 			</nav>
 	);

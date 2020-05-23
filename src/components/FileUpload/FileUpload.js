@@ -47,7 +47,7 @@ class FileUpload extends React.Component {
 	    for(var x = 0; x<this.state.selectedFile.length; x++) {
        		fileData.append('file', this.state.selectedFile[x])
    		}
-	   	axios.post('https://salty-mountain-94369.herokuapp.com/upload', fileData, { 
+	   	axios.post('http://localhost:3000/upload', fileData, { 
 	      // receive two    parameter endpoint url ,form data
 	  	})
 	  	.then(res => { // then print response status
@@ -84,7 +84,7 @@ class FileUpload extends React.Component {
 			)
 		}
 		this.submitFileData();
-		this.submitFormData();
+		//this.submitFormData();
 	}
 
 	render () {
