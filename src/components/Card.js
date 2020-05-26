@@ -29,7 +29,7 @@ class Card extends React.Component {
 
 	render() {
 		return (
-			<div className='bg-white dib br3 pa3 ma2 grow bw2 shadow-5 pointer' onClick={this.onClickHandler}>
+			<div className='bg-white dib br3 pa3 ma2 grow bw2 shadow-5 pointer' style={{zIndex: '1'}} onClick={this.onClickHandler}>
 				<div>
 					<p>{this.titleize(this.props.name)}</p>
 					<h1>${this.props.price}</h1>

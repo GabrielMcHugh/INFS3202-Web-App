@@ -9,6 +9,8 @@ import Register from '../components/Register';
 import Settings from '../components/Settings/Settings';
 import FileUpload from '../components/FileUpload/FileUpload';
 import CardDisplay from '../components/CardDisplay/CardDisplay';
+//import Carousel from '../components/Carousel';
+import InfScroll from '../components/InfScroll/InfScroll';
 //import camera2 from '../images/camera2.jpeg';
 
 
@@ -31,6 +33,7 @@ class App extends Component {
 			route: 'home',
 			isSignedIn: false,
 			items: [],
+			itemnames: [],
 			searchfield: '',
 			pricefilter: 'all',
 			selectedItem: {
@@ -55,6 +58,13 @@ class App extends Component {
 		fetch('https://salty-mountain-94369.herokuapp.com/items')
 		.then(response=> response.json())
 		.then(users => this.setState({ items: users}))
+		.then(response => this.setItemNames())
+	}
+
+	setItemNames = (items) => {
+		const tempitems = [];
+		this.state.items.forEach(item => tempitems.push({id: item.name ,label: item.name}));
+		this.setState({itemnames: tempitems});
 	}
 
 
@@ -88,6 +98,9 @@ class App extends Component {
 	}
 
 	onRouteChange = (route) => {
+		if (route === 'home') {
+			this.componentDidMount();
+		}
 		this.setState({route : route });
 	}
 
@@ -106,7 +119,7 @@ class App extends Component {
 	//I've passed this function down to Content. Must pass it from there down to Sidebar. Then have to have it update teh prifceilfter state.
   
 	render() {
-	  	const { route, items, selectedItem } = this.state;
+	  	const { route, items, selectedItem} = this.state;
 
 		const filteredItems = items.filter(this.filterItems);
 
@@ -115,31 +128,39 @@ class App extends Component {
 	  		<TopBar onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/>
 	  		{ route === 'home' 
 	  		? <div>
-		  		<Header onSearchChange={this.onSearchChange} onRouteChange={this.onRouteChange}/>
-		  		<Nav/>
+		  		<Header onSearchChange={this.onSearchChange} onRouteChange={this.onRouteChange} itemNames={this.state.itemnames}/>
+		  		<Nav onRouteChange={this.onRouteChange}/>
 		  		<Content 
 		  			filteredItems={filteredItems} 
 		  			onFilterChange={this.onFilterChange} 
 		  			onRouteChange={this.onRouteChange}
 		  			loadCard={this.loadCard}/>
 		  	  </div> 
-		  	: ( route === 'card'
+		  	: ( route === 'cameras'
 		  		? <div>
-			  		<Header onSearchChange={this.onSearchChange} onRouteChange={this.onRouteChange}/>
-			  		<Nav/>
-			  		<CardDisplay selectedItem={selectedItem}/>
-		  	  	</div> 
-		  		: ( route === 'signin'
-		  		    ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
-		  		    : ( route === 'register'
-		  		    	? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-		  		    	:   ( route === 'profilesettings'
-		  		    		? <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
-		  		    		: <FileUpload userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
-		  		    	)
-		  		  	)
-		  		  )
-		  		)	  		    
+		  		<Header onSearchChange={this.onSearchChange} onRouteChange={this.onRouteChange} itemNames={this.state.itemnames}/>
+		  		<Nav onRouteChange={this.onRouteChange}/>
+		  		<InfScroll/>
+		  		</div>	
+			  	: ( route === 'card'
+			  		? <div>
+				  		<Header onSearchChange={this.onSearchChange} onRouteChange={this.onRouteChange} itemNames={this.state.itemnames}/>
+				  		<Nav onRouteChange={this.onRouteChange}/>
+				  		<CardDisplay selectedItem={selectedItem} userID={this.state.user.id}/>
+				  		<InfScroll items={this.state.items} selectedItem={selectedItem} userID={this.state.user.id}/>
+			  	  	</div> 
+			  		: ( route === 'signin'
+			  		    ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
+			  		    : ( route === 'register'
+			  		    	? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+			  		    	:   ( route === 'profilesettings'
+			  		    		? <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
+			  		    		: <FileUpload userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
+			  		    	)
+			  		  	)
+			  		  )
+			  		)
+			  	)	  		    
 	  		}
 	  	</div>
 	  );

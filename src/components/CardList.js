@@ -16,7 +16,8 @@ const CardList = ({filteredItems, onRouteChange, loadCard}) => {
 							rating={filteredItems[i].rating}
 							numratings={filteredItems[i].numofratings}
 							onRouteChange={onRouteChange}
-							loadCard={loadCard}/>
+							loadCard={loadCard}
+							style={{zIndex: '1'}}/>
 					);
 				})
 			}
