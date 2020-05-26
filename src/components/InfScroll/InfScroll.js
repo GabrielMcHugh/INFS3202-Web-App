@@ -64,6 +64,8 @@ class InfScroll extends React.Component {
             key={index}
             selectedItem={selectedItem[index]} 
             userID={this.props.userID}
+            AUD={this.props.AUD}
+            JPY={this.props.JPY}
             />
           ))}
         </InfiniteScroll>

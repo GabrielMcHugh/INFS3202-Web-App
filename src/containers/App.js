@@ -36,6 +36,8 @@ class App extends Component {
 			itemnames: [],
 			searchfield: '',
 			pricefilter: 'all',
+			AUD: '',
+			JPY: '',
 			selectedItem: {
 				name: '',
 				price: '',
@@ -59,12 +61,21 @@ class App extends Component {
 		.then(response=> response.json())
 		.then(users => this.setState({ items: users}))
 		.then(response => this.setItemNames())
+		.then(this.loadCurrencies())
 	}
 
 	setItemNames = (items) => {
 		const tempitems = [];
 		this.state.items.forEach(item => tempitems.push({id: item.name ,label: item.name}));
 		this.setState({itemnames: tempitems});
+	}
+
+
+
+	loadCurrencies = () => {
+			fetch('https://api.exchangeratesapi.io/latest')
+			.then(response=> response.json())
+			.then(users => this.setState({AUD: users.rates.AUD, JPY: users.rates.JPY}))
 	}
 
 
@@ -146,8 +157,8 @@ class App extends Component {
 			  		? <div>
 				  		<Header onSearchChange={this.onSearchChange} onRouteChange={this.onRouteChange} itemNames={this.state.itemnames}/>
 				  		<Nav onRouteChange={this.onRouteChange}/>
-				  		<CardDisplay selectedItem={selectedItem} userID={this.state.user.id}/>
-				  		<InfScroll items={this.state.items} selectedItem={selectedItem} userID={this.state.user.id}/>
+				  		<CardDisplay selectedItem={selectedItem} userID={this.state.user.id} AUD={this.state.AUD} JPY={this.state.JPY}/>
+				  		<InfScroll items={this.state.items} selectedItem={selectedItem} userID={this.state.user.id} AUD={this.state.AUD} JPY={this.state.JPY}/>
 			  	  	</div> 
 			  		: ( route === 'signin'
 			  		    ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
