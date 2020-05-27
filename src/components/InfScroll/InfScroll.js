@@ -42,7 +42,6 @@ class InfScroll extends React.Component {
   render() {
 
     const { webitems,selectedItem } = this.state;
-    console.log(selectedItem[0]);
 
     return (
       <div>

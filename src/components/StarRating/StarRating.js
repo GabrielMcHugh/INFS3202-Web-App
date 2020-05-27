@@ -13,7 +13,7 @@ class StarRating extends React.Component {
 
 	onRatingChange = (newRating) => {
 		const { rating, numratings} = this.state;
-		const update = ((rating+newRating))/(numratings+1);
+		const update = (((rating*numratings)+newRating))/(numratings+1);
 		this.setState({rating: newRating, editable: false});
 		this.onSubmitUpdate(update);
 	}

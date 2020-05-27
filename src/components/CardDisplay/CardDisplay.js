@@ -5,7 +5,6 @@ import Reviews from '../Reviews/Reviews';
 
 const CardDisplay = ({selectedItem, userID, AUD, JPY}) => {
 
-	console.log(AUD);
 
 	const { name, price, type, rating, id, numratings } = selectedItem
 
@@ -17,7 +16,7 @@ const CardDisplay = ({selectedItem, userID, AUD, JPY}) => {
 					<h1 className="f1 tracked-tight mt0">{name}</h1>
 					<p>Type: {type}</p>
 					<h1 className="f1 tracked-tight mt0">${price}</h1>
-					<h1>AUD Exchange Rate: <b>${AUD*price}</b>, JPY Exchange Rate: <b>¥{JPY*price}</b>,</h1>
+					<h1>AUD Exchange Rate: <b>${(AUD*price).toFixed(2)}</b>, JPY Exchange Rate: <b>¥{(JPY*price).toFixed(2)}</b>,</h1>
 					<StarRating initialvalue={rating/2} id={id} numratings={numratings}/>
 					{ !rating ?	<p>Did you like this product?</p>
 						: <p> {numratings} Users rated this: {rating/2}</p>

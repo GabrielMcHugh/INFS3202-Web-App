@@ -26,7 +26,12 @@ class Searchbox extends React.Component {
 
   handleChange = (e) => {
   	this.setState({ value: e.target.value });
-  	this.props.onSearchChange(e)
+  	this.props.onSearchChange(e.target.value)
+  }
+
+  handleChangeOnSelect = (e) => {
+    this.setState({ value: e });
+    this.props.onSearchChange(e)
   }
 
   render() {
@@ -58,7 +63,7 @@ class Searchbox extends React.Component {
         }
         value={this.state.value}
         onChange={e => this.handleChange(e)}
-        onSelect={value => this.setState({ value })}
+        onSelect={e=> this.handleChangeOnSelect(e)}
         menuStyle={menuStyle}
       />
     )
