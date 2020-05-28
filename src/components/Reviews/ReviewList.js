@@ -2,7 +2,6 @@ import React from 'react';
 import ReviewCards from './ReviewCards';
 
 const ReviewList = ({reviews}) => {
-	console.log(reviews)
 	return (
 		<div>
 			{

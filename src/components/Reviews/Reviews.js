@@ -33,7 +33,7 @@ class Reviews extends React.Component {
 
 	render (){
 		return !this.state.reviews.length ? 
-		<p>This item has no reviews yet</p>
+		<p className="ma3 b">This item has no reviews yet</p>
 		: (
 			<div>
 				<p className="f6 b db mb2"> Other Users Reviews </p>
