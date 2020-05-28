@@ -64,8 +64,10 @@ class App extends Component {
 		.then(users => this.setState({ items: users}))
 		.then(response => this.setItemNames())
 		.then(this.loadCurrencies())
-		.then(this.checkCookie())
+		.then(this.checkCookie2())
 	}
+
+
 
 	setCookie(cname, cvalue, exdays) {
 	  var d = new Date();
@@ -98,6 +100,17 @@ class App extends Component {
 	    if (user !== "" && user !== null) {
 	      this.setCookie("username", user, 365);
 	    }
+	  }
+	}
+
+	checkCookie2() {
+	  var json_str = this.getCookie("mycookie");
+	  console.log(json_str);
+	  if (json_str!== "") {
+	  	var user = JSON.parse(json_str);
+	  	this.loadUser(user)
+		this.onSignIn(true);
+	    alert("Welcome again to shutterspace "+user.name);
 	  }
 	}
 
@@ -232,9 +245,9 @@ class App extends Component {
 					  		<InfScroll items={this.state.items} selectedItem={selectedItem} userID={this.state.user.id} AUD={this.state.AUD} JPY={this.state.JPY}/>
 				  	  	</div> 
 				  		: ( route === 'signin'
-				  		    ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
+				  		    ? <Signin setCookie={this.setCookie} loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSignIn={this.onSignIn}/>
 				  		    : ( route === 'register'
-				  		    	? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+				  		    	? <Register setCookie={this.setCookie} loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				  		    	:   ( route === 'profilesettings'
 				  		    		? <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
 				  		    		: <FileUpload userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
