@@ -35,6 +35,9 @@ class Register extends React.Component {
 			.then(response => response.json())
 			.then(user => {
 				if (user.id) {
+					var json_str = JSON.stringify(user);
+					document.cookie = "mycookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+					this.props.setCookie('mycookie', json_str, 365);
 					this.props.loadUser(user)
 					this.props.onRouteChange('home');
 				}

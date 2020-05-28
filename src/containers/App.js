@@ -251,7 +251,7 @@ class App extends Component {
 				  		    : ( route === 'register'
 				  		    	? <Register setCookie={this.setCookie} loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				  		    	:   ( route === 'profilesettings'
-				  		    		? <Settings loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
+				  		    		? <Settings  user={this.state.user} loadUser={this.loadUser} userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
 				  		    		: <FileUpload userID={this.state.user.id} onRouteChange={this.onRouteChange}/>
 				  		    	)
 				  		  	)

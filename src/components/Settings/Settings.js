@@ -39,10 +39,17 @@ class Settings extends React.Component {
 	}
 
 	render() {
+		const { user } = this.props;
 
 		return (
 			<main className="bg-white pa4 black-80">
 			  <div className="measure ml5">
+			  	<legend className="f4 fw6 ph0 mh0">Profile Details</legend>
+			    <p>Username: {user.name}</p>
+			    <p>User ID: {user.id}</p>
+			    <p>Email : {user.email}</p>
+			    <p>Date Joined {user.joined}</p>
+			    <br/>
 			    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
 			      <legend className="f4 fw6 ph0 mh0">Update Profile</legend>
 			      <div className="mt3">
