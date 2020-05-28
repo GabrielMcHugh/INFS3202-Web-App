@@ -22,7 +22,7 @@ class Wishlist extends React.Component {
 			if (user) {
 				this.props.updateWishList(user);
 			}
-		})
+		}).catch(err => console.log(err));
 	}
 
 	componentDidUpdate() {

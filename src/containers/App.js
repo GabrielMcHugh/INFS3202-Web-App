@@ -110,7 +110,6 @@ class App extends Component {
 	  	var user = JSON.parse(json_str);
 	  	this.loadUser(user)
 		this.onSignIn(true);
-	    alert("Welcome again to shutterspace "+user.name);
 	  }
 	}
 
@@ -183,9 +182,12 @@ class App extends Component {
 		//if you have this function do the heavy lifting of building a wishlist
 		//-you can simply pass the wishlist into the Wishlist Component as props
 		const elementIds = [];
+		console.log(data)
+		if (data !=="Empty") {
 		data.forEach(element => elementIds.push(element.item_id)); //first loop over data ids and build index
 		const wishlistItems = this.state.items.filter(item => elementIds.includes(item.id) ); //then use id's to filter this.state.items
-		this.setState({wishlist: wishlistItems});//then setState of wishlist to those items
+		this.setState({wishlist: wishlistItems});
+		}//then setState of wishlist to those items
 	}
 
 	// MAde this function to filter the items. Not sure how to combine it with the searchfield filter
