@@ -23,6 +23,9 @@ class Register extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
+		if (this.state.password.length < 8) {
+			alert("password must at least be 8 characters")
+		} else {
 		fetch('https://salty-mountain-94369.herokuapp.com/register', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
@@ -42,6 +45,7 @@ class Register extends React.Component {
 					this.props.onRouteChange('home');
 				}
 			})
+		}
 	}
 
 	render() {
