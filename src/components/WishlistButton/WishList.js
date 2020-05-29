@@ -44,8 +44,8 @@ class Wishlist extends React.Component {
 					<p className="f6 no-underline ph3 pv2 mb2">Sign in to see your wish list</p>
 					:<MyCarousel
 			  			camItems={this.props.wishlist}
-			  			onRouteChange={this.onRouteChange}
-			  			loadCard={this.loadCard}
+			  			onRouteChange={this.props.onRouteChange}
+			  			loadCard={this.props.loadCard}
 			  		/>
 				} 
 			</div>
